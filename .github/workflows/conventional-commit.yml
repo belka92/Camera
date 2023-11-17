@@ -1,26 +1,15 @@
-name: 'Lint code, run tests'
+name: PR Conventional Commit Validation
 
 on:
   pull_request:
-    branches:
-      - main
-      - 'v**'
+    types: [opened, synchronize, reopened, edited]
 
 jobs:
-  check-branch:
+  validate-pr-title:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.18.2]
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: PR Conventional Commit Validation
+        uses:  ytanikin/PRConventionalCommits@v1.1.0
         with:
-          fetch-depth: 0
-
-      - name: Lint commit names
-        uses: ytanikin/PRConventionalCommits@v1.1.0
-         with:
           task_types: '["feat","fix","docs","test","ci","refactor","perf","chore","revert"]'
           add_label: 'false'
