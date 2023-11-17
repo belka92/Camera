@@ -20,4 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Lint commit names
-        uses: wagoid/commitlint-github-action@v5
+        uses: ytanikin/PRConventionalCommits@v1.1.0
+         with:
+          task_types: '["feat","fix","docs","test","ci","refactor","perf","chore","revert"]'
+          add_label: 'false'
