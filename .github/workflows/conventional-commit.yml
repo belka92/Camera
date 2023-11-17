@@ -1,25 +1,15 @@
-name: Conventional Commit Validation Check
+name: PR Conventional Commit Validation
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
+    types: [opened, synchronize, reopened, edited]
 
 jobs:
-  validate-commit:
+  validate-pr-title:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install commitlint
-        run: npm install -g @commitlint/{cli,config-conventional}
-
-      - name: Fetch latest changes
-        run: git fetch origin main
-
-      - name: Validate commits
-        run: commitlint --from=origin/main --to=$GITHUB_SHA --config=commitlint.config.js
+      - name: PR Conventional Commit Validation
+        uses:  ytanikin/PRConventionalCommits@v1.1.0
+        with:
+          task_types: '["feat","fix","docs","test","ci","refactor","perf","chore","revert"]'
+          add_label: 'false'
