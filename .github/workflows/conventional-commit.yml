@@ -1,0 +1,19 @@
+name: Conventional Commit Validation
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  validate-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install commitlint
+        run: npm install -g @commitlint/{cli,config-conventional}
+
+      - name: Validate commits
+        run: git log origin/main..HEAD --oneline | npx commitlint --from=main
