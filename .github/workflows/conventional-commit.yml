@@ -3,7 +3,7 @@ name: Conventional Commit Validation
 on:
   push:
     branches:
-      - main # Or your preferred branch
+      - main 
 
 jobs:
   validate-commit:
