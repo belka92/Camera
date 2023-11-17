@@ -1,3 +1,23 @@
-- name: Conventional Commit In Pull Requests
-  uses: ytanikin/PRConventionalCommits@1.1.0
+name: 'Lint code, run tests'
 
+on:
+  pull_request:
+    branches:
+      - main
+      - 'v**'
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.18.2]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Lint commit names
+        uses: wagoid/commitlint-github-action@v5
