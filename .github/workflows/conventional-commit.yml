@@ -1,4 +1,4 @@
-name: Conventional Commit Validation Check
+name: Conventional Commit Validation
 
 on:
   push:
