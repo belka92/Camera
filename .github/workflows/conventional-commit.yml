@@ -3,7 +3,10 @@ name: Conventional Commit Validation Check
 on:
   push:
     branches:
-      - main 
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   validate-commit:
@@ -16,4 +19,6 @@ jobs:
         run: npm install -g @commitlint/{cli,config-conventional}
 
       - name: Validate commits
-        run: git log origin/main..HEAD --oneline | commitlint --from=main --config=commitlint.config.js
+        run: |
+          git fetch origin main
+          git log origin/main..HEAD --oneline | commitlint --from=main --config=commitlint.config.js
