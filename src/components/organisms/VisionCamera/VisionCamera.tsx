@@ -7,8 +7,7 @@ import { PinchGestureHandler } from 'react-native-gesture-handler';
 import { Camera, CameraDevice, CameraPermissionStatus, Frame } from 'react-native-vision-camera';
 
 import { useStyles } from './VisionCamera.useStyles';
-import { Surface } from 'gl-react';
-import { Saturate } from '../../molecules';
+
 
 const ReanimatedCamera = Reanimated.createAnimatedComponent(Camera);
 Reanimated.addWhitelistedNativeProps({

@@ -16,4 +16,4 @@ jobs:
         run: npm install -g @commitlint/{cli,config-conventional}
 
       - name: Validate commits
-        run: git log origin/main..HEAD --oneline | npx commitlint --from=main
+        run: git log origin/main..HEAD --oneline | commitlint --from=main --config=.commitlint.config.js
