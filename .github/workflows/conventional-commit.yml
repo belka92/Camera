@@ -22,4 +22,4 @@ jobs:
         run: git fetch origin main
 
       - name: Validate commits
-        run: commitlint --from=origin/main --to=HEAD --config=commitlint.config.js
+        run: commitlint --from=origin/main --to=$GITHUB_SHA --config=commitlint.config.js
