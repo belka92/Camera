@@ -18,7 +18,8 @@ jobs:
       - name: Install commitlint
         run: npm install -g @commitlint/{cli,config-conventional}
 
+      - name: Fetch latest changes
+        run: git fetch origin main
+
       - name: Validate commits
-        run: |
-          git fetch origin main
-          git log origin/main..HEAD --oneline | commitlint --from=main --config=commitlint.config.js
+        run: commitlint --from=origin/main --to=HEAD --config=commitlint.config.js
